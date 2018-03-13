@@ -1,0 +1,79 @@
+@font-face {
+    font-family: "B Yekan";
+    src: url('../fonts/BYekan.eot');
+}
+@font-face {
+    font-family: "B Yekan";
+    src: url('../fonts/BYekan.ttf');
+}
+@font-face {
+    font-family: "B Yekan";
+    src: url('../fonts/BYekan.woff');
+}
+body{
+    font-family: "B Yekan";
+    direction: rtl !important;
+}
+
+*,ul,li,p{
+    padding: 0;
+    margin: 0;
+}
+
+
+
+.navbar-light .navbar-nav .nav-link:hover{
+    border-bottom: 2px solid #E74c3c;
+    outline: none;
+}
+.navbar{
+    min-height: inherit;
+    margin-bottom: 0;
+}
+.navbar-brand{
+    font-size: 17pt;
+}
+
+.navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.main-nav li a{
+    display: block;
+}
+.dropdown-toggle::after{
+    display: none;
+}
+
+.main-nav li {
+    padding: 0;
+    width: 100%;
+}
+a.dropdown-item{
+    text-align: right;
+}
+.card-header{
+    background-color: #cce5ff;
+}
+
+.card-body a:hover{
+    background-color: #ddd;
+    border-radius: 4px;
+}
+.ChangeArrow{
+    color: black;
+}
+.card-body{
+    font-size: 10pt;
+}
+.nav-link {
+    direction: rtl;
+    padding-right: 5px;
+}
+.nav.flex-column {
+    margin-right: 5px !important;
+    . padding-right:0px !important;
+}
+.mynav{
+    padding: 0;
+}
