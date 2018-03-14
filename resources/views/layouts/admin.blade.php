@@ -181,10 +181,7 @@
 
 
         </div>
-        <div class="col-xl-10" style="border: 1px solid #ccc">
-
-            <h1>Admin</h1>
-
+        <div class="col-xl-10">
             @yield('content')
         </div>
 
