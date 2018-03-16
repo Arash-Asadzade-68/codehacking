@@ -91,8 +91,8 @@
                     </div>
                     <div id="collapseOne" class="collapse">
                         <div class="card-body">
-                            <a class="dropdown-item" href="#">همه کاربران</a>
-                            <a class="dropdown-item" href="#">ایجاد کاربر</a>
+                            <a class="dropdown-item" href="{{route('users.index')}}">همه کاربران</a>
+                            <a class="dropdown-item" href="{{route('users.create')}}">ایجاد کاربر</a>
                         </div>
                     </div>
                 </div>
@@ -181,9 +181,9 @@
 
 
         </div>
-        <div class="col-xl-10">
+
             @yield('content')
-        </div>
+
 
     </div>
 
