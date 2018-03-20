@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UsersEditRequest;
 use App\Http\Requests\UsersRequest;
 use App\Photo;
+use App\Post;
 use App\Role;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class AdminUsersController extends Controller
 {
@@ -21,6 +23,7 @@ class AdminUsersController extends Controller
         //
 
         $users = User::all();
+
 
         return view('admin.users.index', compact('users'));
     }
@@ -49,8 +52,7 @@ class AdminUsersController extends Controller
 //        return $request->all();
         if (trim($request->password) == '') {
             $input = $request->except('password');
-        }
-        else {
+        } else {
 
             $input = $request->all();
             $input['password'] = bcrypt($request->password);
@@ -78,6 +80,9 @@ class AdminUsersController extends Controller
     public function show($id)
     {
         //
+        $user = User::findOrFail($id);
+        $roles = Role::all();
+        return view('admin.users.delete', compact('user', 'roles'));
     }
 
     /**
@@ -108,8 +113,7 @@ class AdminUsersController extends Controller
 
         if (trim($request->password) == '') {
             $result = $request->except('password');
-        }
-        else {
+        } else {
 
             $result = $request->all();
             $result['password'] = bcrypt($request->password);
@@ -125,6 +129,7 @@ class AdminUsersController extends Controller
         }
 
         $user->update($result);
+        Session::flash('Update_User', 'عملیات ویرایش با موفقیت انجام گردید.');
         return redirect('admin/users');
 
 
@@ -139,5 +144,10 @@ class AdminUsersController extends Controller
     public function destroy($id)
     {
         //
+        $user = User::findOrFail($id);
+        unlink(public_path().$user->photo->path);
+        $user->delete();
+        Session::flash('Delete_User','عملیات حذف کاربر با موفقیت انجام شد.');
+        return redirect('admin/users');
     }
 }

@@ -43,12 +43,16 @@
             <div class="float-right">
                 <div class="dropdown">
                     <button type="button" class="btn  dropdown-toggle" data-toggle="dropdown">
-                        <span class="fa fa-user" style="padding-left: 5px;"></span> <span class=" fa fa-caret-down"></span>
+                        <span class="fa fa-user" style="padding-left: 5px;"></span><span  style="padding-left: 5px;">{{Auth::user()->name}}</span> <span class=" fa fa-caret-down"></span>
                     </button>
                     <div class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item" href="#"><span class="fa fa-user" style="padding-left: 5px;"></span><span>پروفایل</span></a>
                         <a class="dropdown-item" href="#"><span class="fa fa-gear" style="padding-left: 5px;"></span><span>تنضیمات</span></a>
-                        <a class="dropdown-item" href="#"><span class="fa fa-sign-out" style="padding-left: 5px;"></span><span>خروج</span></a>
+                        <a class="dropdown-item"  href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                            <span class="fa fa-sign-out" style="padding-left: 5px;"></span><span>خروج</span></a>
                     </div>
                 </div>
             </div>
@@ -108,8 +112,8 @@
 
                     <div id="collapseTwo" class="collapse">
                         <div class="card-body">
-                            <a class="dropdown-item" href="#">همه پست ها</a>
-                            <a class="dropdown-item" href="#">ایجاد پست</a>
+                            <a class="dropdown-item" href="{{route('posts.index')}}">همه پست ها</a>
+                            <a class="dropdown-item" href="{{route('posts.create')}}">ایجاد پست</a>
                         </div>
                     </div>
                 </div>

@@ -38,10 +38,11 @@
         <label for="password">رمز عبور :</label>
         <input class="form-control m-2" type="text" name="password" placeholder="رمز عبور را وارد کنید" style="color: #101010; font-size: 10pt;">
 
-        <input class="btn btn-outline-success m-2" type="submit" name="submit" value="ویرایش">
+        <input class="btn btn-outline-success m-2" style="width: 100px" type="submit" name="submit" value="ویرایش">
 
 
     </form>
+
         @include('includes.form_error')
     </div>
 
