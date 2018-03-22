@@ -128,8 +128,8 @@
                     </div>
                     <div id="collapseThree" class="collapse">
                         <div class="card-body">
-                            <a class="dropdown-item" href="#">همه دسته ها</a>
-                            <a class="dropdown-item" href="#">ایجاد دسته</a>
+                            <a class="dropdown-item" href="{{route('categories.index')}}">همه دسته ها</a>
+                            <a class="dropdown-item" href="{{route('categories.index')}}">ایجاد دسته</a>
                         </div>
                     </div>
                 </div>

@@ -3,8 +3,6 @@
 
 
 @section('content')
-
-
     <div class="col-xl-10">
         @if(Session::has('Update_User') or Session::has('Delete_User'))
 
@@ -19,8 +17,8 @@
 
 
 
-        <table class="table table-responsive-md table-hover" style="border-radius: 4px;">
-            <thead style="background-color: #ddd">
+        <table class="table table-responsive-md table-hover" style="border-radius: 4px; font-size: 12pt">
+            <thead style="background-color: #ddd; font-size: 10pt">
             <tr>
                 <th>ردیف</th>
                 <th>نام و نام خانوادگی</th>
@@ -45,10 +43,10 @@
                         <td>{{$user->role->name}}</td>
                         <td>{{$user->is_active == 1 ? "فعال" : "غیر فعال"}}</td>
                         <td>
-                            <a style="line-height: 27px; padding-right: 13pt; font-size: 16pt; color: black; opacity: .7; "
+                            <a style="line-height: 27px; padding-right: 13pt; font-size: 16pt; color: green; opacity: .7; "
                                class="fa fa-edit " href="{{route('users.edit',$user->id)}}"></a></td>
                         <td>
-                            <a style="line-height: 27px; padding-right: 13pt; font-size: 16pt; color: black; opacity: .7; "
+                            <a style="line-height: 27px; padding-right: 13pt; font-size: 16pt; color: red; opacity: .7; "
                                class="fa fa-trash " href="{{route('users.destroy',$user->id)}}"></a>
                         </td>
                     </tr>

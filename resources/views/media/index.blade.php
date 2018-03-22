@@ -7,7 +7,7 @@
 
 
     <div class="col-xl-10">
-        <h1>همه پست ها</h1>
+        <h1>همه تصاویر</h1>
         @if(Session::has('Update_Post') or Session::has('Delete_Post'))
 
             <div class="bg-success" style="color: #fff; margin-bottom: 10px;">
@@ -24,15 +24,11 @@
             <thead style="background-color: #ddd;">
             <tr>
                 <th>ردیف</th>
-                <th>تصویر</th>
-                <th>فرستنده</th>
                 <th> عنوان</th>
                 <th>دسته</th>
                 <th>متن</th>
                 <th>زمان ایجاد</th>
                 <th> زمان ویرایش</th>
-                <th>ویرایش</th>
-                <th>حذف</th>
             </tr>
             </thead>
             <tbody >

@@ -21,7 +21,7 @@ class AdminPostsController extends Controller
     {
         //
 
-        $posts=Post::all();
+        $posts = Post::all();
         return view('admin.posts.index', compact('posts'));
     }
 
@@ -73,6 +73,8 @@ class AdminPostsController extends Controller
     public function show($id)
     {
         //
+        $post = Post::findOrFail($id);
+        return view('admin.posts.delete', compact('post'));
     }
 
     /**
@@ -84,6 +86,10 @@ class AdminPostsController extends Controller
     public function edit($id)
     {
         //
+        $post = Post::findOrFail($id);
+        $categories = Category::all();
+
+        return view('admin.posts.edit', compact('post', 'categories'));
     }
 
     /**
@@ -96,6 +102,18 @@ class AdminPostsController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $post = Post::findOrFail($id);
+        $result = $request->all();
+        if ($path = $request->file('photo_id')) {
+            $name = time() . $path->getClientOriginalName();
+            $path->move('images', $name);
+            $photo = Photo::create(['path' => $name]);
+            $result['photo_id'] = $photo->id;
+        }
+        $post->update($result);
+        Session::flash('Update_Post', 'عملیات ویرایش با موفقیت انجام گردید');
+        return redirect('/admin/posts');
+
     }
 
     /**
@@ -107,5 +125,10 @@ class AdminPostsController extends Controller
     public function destroy($id)
     {
         //
+        $post = Post::findOrFail($id);
+        unlink(public_path().$post->photo->path);
+        $post->delete();
+        Session::flash('Delete_Post','عملیات حذف با موفقیت انجام گردید.');
+        return redirect('/admin/posts');
     }
 }
