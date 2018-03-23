@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Http\Requests\CategoriesCreateRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -36,7 +37,7 @@ class AdminCategoriesController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoriesCreateRequest $request)
     {
         //
         Category::create($request->all());
@@ -99,4 +100,5 @@ class AdminCategoriesController extends Controller
         return redirect('admin/categories');
 
     }
+
 }

@@ -15,6 +15,9 @@
         </form>
 
 
+        @include('includes.form_error')
+
+
     </div>
     <div class="col-xl-6">
 

@@ -9,6 +9,8 @@
     <link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
 
+    @yield('styles')
+
     {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>--}}
     <title>Document</title>
 </head>
@@ -144,8 +146,8 @@
                     </div>
                     <div id="collapseFour" class="collapse">
                         <div class="card-body">
-                            <a class="dropdown-item" href="#">مدیا</a>
-                            <a class="dropdown-item" href="#">آپلود</a>
+                            <a class="dropdown-item" href="{{route('media.index')}}">مدیا</a>
+                            <a class="dropdown-item" href="{{route('media.create')}}">آپلود</a>
                         </div>
                     </div>
                 </div>
@@ -199,4 +201,5 @@
 <script src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
 <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{asset('js/MyScripts.js')}}"></script>
+@yield('scripts')
 </html>
