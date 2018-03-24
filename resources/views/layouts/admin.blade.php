@@ -116,6 +116,7 @@
                         <div class="card-body">
                             <a class="dropdown-item" href="{{route('posts.index')}}">همه پست ها</a>
                             <a class="dropdown-item" href="{{route('posts.create')}}">ایجاد پست</a>
+                            <a class="dropdown-item" href="{{route('comments.index')}}">کامنت ها</a>
                         </div>
                     </div>
                 </div>
