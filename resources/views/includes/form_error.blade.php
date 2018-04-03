@@ -4,7 +4,13 @@
    <ul>
     @foreach($errors->all() as $error)
 
-        <li>{{$error}}</li>
+        <li >{{$error}}
+
+            <button type="button" class="close float-left" data-dismiss="alert" style="font-size: 10pt;">
+                &times;
+            </button>
+
+        </li>
 
     @endforeach
 

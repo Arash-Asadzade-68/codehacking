@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Comment;
 use App\Http\Requests\PostsCreateRequest;
 use App\Photo;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\View\Compilers\Concerns\CompilesComments;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class AdminPostsController extends Controller
 {
@@ -126,9 +129,24 @@ class AdminPostsController extends Controller
     {
         //
         $post = Post::findOrFail($id);
-        unlink(public_path().$post->photo->path);
+        if(file_exists(public_path().$post->photo->path) AND !empty($post->photo->path)){
+            unlink(public_path().$post->photo->path);
+            $post->photo->delete();
+        }
         $post->delete();
         Session::flash('Delete_Post','عملیات حذف با موفقیت انجام گردید.');
         return redirect('/admin/posts');
     }
+
+
+    public function post($slug)
+    {
+        $post = Post::findBySlugOrFail($slug);
+        $categories = Category::all();
+        $comments = $post->comments()->whereIsActive(1)->get();
+        return view('post', compact('post', 'categories', 'comments'));
+
+    }
+
+
 }

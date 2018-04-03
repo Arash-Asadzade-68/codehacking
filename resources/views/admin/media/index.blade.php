@@ -37,8 +37,7 @@
                     <tr>
                         <td>{{$photo->id}}</td>
                         <td><img class="img-fluid rounded-circle" style="width: 50px; height: 50px;"
-                                 src="{{$photo->path ? $photo->path : '/images/1.png'}}"
-                                 alt="فاقد عکس"></td>
+                                 src="{{$photo->path ? $photo->path : '1.png'}}"></td>
                         <td>{{$photo->created_at->diffForhumans()}}</td>
                         <td>{{$photo->updated_at->diffForhumans()}}</td>
                         <td>

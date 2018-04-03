@@ -89,3 +89,7 @@ a.dropdown-item{
 .center{
     text-align: center;
 }
+
+.respond {
+    display: none;
+}

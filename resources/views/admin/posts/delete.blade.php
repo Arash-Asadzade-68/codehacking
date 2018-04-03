@@ -17,7 +17,7 @@
 
                     <li><span>فرستنده:</span>{{$post->user->name}}</li>
 
-                    <li><span>دسته:</span>{{$post->category->name}}</li>
+                    <li><span>دسته:</span>{{$post->category ?$post->category->name:'فاقد دسته'}}</li>
 
                     <li><span>عنوان:</span>{{$post->title}}</li>
 

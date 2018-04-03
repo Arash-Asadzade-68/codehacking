@@ -21,15 +21,23 @@
     </div>
     <div class="col-xl-6">
 
-        @if(Session::has('Update_Category') or Session::has('Delete_Category'))
+        @if(Session::has('Update_Category') )
 
-            <div class="bg-success" style="color: #fff; margin-bottom: 10px;">
+            <div class="alert alert-success" style="color: #fff; margin-bottom: 10px;">
                 {{session('Update_Category')}}
-            </div>
-            <div class="bg-danger" style="color: #fff; margin-bottom: 10px;">
-                {{session('Delete_Category')}}
+                <button type="button" class="close float-left" data-dismiss="alert" style="font-size: 10pt;">
+                    &times;
+                </button>
             </div>
 
+        @endif
+        @if(Session::has('Delete_Category'))
+            <div class="alert alert-danger" style="color: #fff; margin-bottom: 10px;">
+                {{session('Delete_Category')}}
+                <button type="button" class="close float-left" data-dismiss="alert" style="font-size: 10pt;">
+                    &times;
+                </button>
+            </div>
         @endif
 
 

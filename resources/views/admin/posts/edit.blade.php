@@ -19,7 +19,7 @@
             <div class="form-group">
                 <lable for="category_id">دسته:</lable>
                 <select class="form-control m-2" name="category_id" style="color: #101010; font-size: 10pt;">
-                    <option value="{{$post->category->id}}" selected="selected">{{$post->category->name}}</option>
+                    <option value="{{$post->category ? $post->category->id : 0 }}" selected="selected">{{$post->category ? $post->category->name : 'فاقد دسته'}}</option>
                     @foreach($categories as $category)
                         <option value="{{$category->id}}">{{$category->name}}</option>
                     @endforeach

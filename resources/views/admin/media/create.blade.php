@@ -13,7 +13,6 @@
 
         <form class="align-content-center dropzone" method="Post" action="/admin/media">
             @csrf
-
         </form>
 
     </div>

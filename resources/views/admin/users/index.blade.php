@@ -4,17 +4,24 @@
 
 @section('content')
     <div class="col-xl-10">
-        @if(Session::has('Update_User') or Session::has('Delete_User'))
+        @if(Session::has('Update_User') )
 
-            <div class="bg-success" style="color: #fff; margin-bottom: 10px;">
+            <div class="alert alert-success" style="color: #fff; margin-bottom: 10px;">
                 {{session('Update_User')}}
+                <button type="button" class="close float-left" data-dismiss="alert" style="font-size: 10pt;">
+                    &times;
+                </button>
             </div>
-            <div class="bg-danger" style="color: #fff; margin-bottom: 10px;">
+
+        @endif
+        @if(Session::has('Delete_User'))
+            <div class="alert alert-danger" style="color: #fff; margin-bottom: 10px;">
                 {{session('Delete_User')}}
+                <button type="button" class="close float-left" data-dismiss="alert" style="font-size: 10pt;">
+                    &times;
+                </button>
             </div>
-
-             @endif
-
+        @endif
 
 
         <table class="table table-responsive-md table-hover" style="border-radius: 4px; font-size: 12pt">

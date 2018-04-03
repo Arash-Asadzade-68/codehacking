@@ -10,7 +10,7 @@ class AdminMediasController extends Controller
     //
     public function index()
     {
-        $photos=Photo::paginate(3);
+        $photos = Photo::paginate(3);
 
         return view('admin.media.index', compact('photos'));
     }
@@ -28,17 +28,20 @@ class AdminMediasController extends Controller
 
     public function store(Request $request)
     {
-        $path= $request->file('file');
-        $name= time().$path->getClientOriginalName();
-        $path->move('images',$name);
-        Photo::create(['path'=>$name]);
+        $path = $request->file('file');
+        $name = time() . $path->getClientOriginalName();
+        $path->move('images', $name);
+        Photo::create(['path' => $name]);
 
     }
 
     public function destroy($id)
     {
-        $photo=Photo::findOrFail($id);
-        unlink(public_path().$photo->path);
+        $photo = Photo::findOrFail($id);
+            if ($photo) {
+                unlink(public_path() . $photo->path);
+            }
+
         $photo->delete();
         return redirect('admin/media');
     }

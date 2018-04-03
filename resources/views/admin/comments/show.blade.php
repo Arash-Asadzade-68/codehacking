@@ -8,18 +8,18 @@
 
     <div class="col-xl-10">
         <h1>همه کامنت ها</h1>
-        @if(Session::has('Update_Reply') or Session::has('Delete_Reply'))
+        @if(Session::has('Update_Comment') or Session::has('Delete_Comment'))
 
             <div class="alert alert-success" style="color: #fff; margin-bottom: 10px;">
-                {{session('Update_Reply')}}
+                {{session('Update_Comment')}}
             </div>
             <div class="alert alert-danger" style="color: #fff; margin-bottom: 10px;">
-                {{session('Delete_Reply')}}
+                {{session('Delete_Comment')}}
             </div>
 
         @endif
 
-        @if(count($replies)>0)
+        @if(count($comments)>0)
             <table class="table table-responsive-md table-hover" style="border-radius: 4px;font-size: 10pt; ">
                 <thead style="background-color: #ddd;">
                 <tr>
@@ -36,22 +36,22 @@
                 </thead>
                 <tbody >
 
-                @foreach($replies as $reply)
+                @foreach($comments as $comment)
 
                     <tr>
-                        <td>{{$reply->id}}</td>
+                        <td>{{$comment->id}}</td>
                         <td><img class="img-fluid rounded-circle" style="width: 50px; height: 50px;"
-                                 src="{{$reply->photo ? $reply->photo : '/images/1.png'}}"
-                                 alt="فاقد عکس"></td>
-                        <td>{{$reply->author}}</td>
-                        <td>{{$reply->email}}</td>
-                        <td>{{str_limit($reply->body,10)}}</td>
-                        <td>{{$reply->created_at->diffForhumans()}}</td>
-                        <td><a href="{{route('home.post',$reply->comment->post->slug)}}">مشاهده</a></td>
+                        src="{{$comment->photo ? $comment->photo : '/images/1.png'}}"
+                        alt="فاقد عکس"></td>
+                        <td>{{$comment->author}}</td>
+                        <td>{{$comment->email}}</td>
+                        <td>{{str_limit($comment->body,10)}}</td>
+                        <td>{{$comment->created_at->diffForhumans()}}</td>
+                        <td><a href="{{route('home.post',$comment->post->slug)}}">مشاهده</a></td>
                         <td>
-                            @if($reply->is_active==1)
+                            @if($comment->is_active==1)
 
-                                <form class="align-content-center" method="Post" action="/admin/comment/replies/{{$reply->id}}">
+                                <form class="align-content-center" method="Post" action="/admin/comments/{{$comment->id}}">
                                     @csrf
                                     @method('PATCH')
                                     <input type="hidden" name="is_active" value="0">
@@ -63,7 +63,7 @@
 
                             @else
 
-                                <form class="align-content-center" method="Post" action="/admin/comment/replies/{{$reply->id}}">
+                                <form class="align-content-center" method="Post" action="/admin/comments/{{$comment->id}}">
                                     @csrf
                                     @method('PATCH')
                                     <input type="hidden" name="is_active" value="1">
@@ -77,11 +77,11 @@
                         </td>
                         <td>
 
-                            <a style="font-size: 12pt; color: red; cursor: pointer" class="fa fa-trash" data-toggle="modal" data-target="#{{$reply->id}}">
+                            <a style="font-size: 12pt; color: red; cursor: pointer" class="fa fa-trash" data-toggle="modal" data-target="#{{$comment->id}}">
                             </a>
 
                             <!-- The Modal -->
-                            <div class="modal fade" id="{{$reply->id}}">
+                            <div class="modal fade" id="{{$comment->id}}">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
 
@@ -93,7 +93,7 @@
                                         <!-- Modal body -->
                                         <div class="modal-body">
 
-                                            <form class="align-content-center" method="Post" action="/admin/comment/replies/{{$reply->id}}">
+                                            <form class="align-content-center" method="Post" action="/admin/comments/{{$comment->id}}">
                                                 @csrf
                                                 @method('DELETE')
                                                 <input class="btn btn-info" type="submit"  name="submit" value="بله">
@@ -122,7 +122,7 @@
 
                     <div class="alert alert-primary">
 
-                        پاسخی برای کامنت وجود ندارد
+                        کامنتی برای مشاهده وجود ندارد
                         <button type="button" class="close float-left" data-dismiss="alert"  style="font-size: 10pt">&times;</button>
                         <button ></button>
                     </div>
