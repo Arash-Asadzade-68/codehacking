@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <span style=" font-size:14pt; padding-left: 5px; color: #1c7430">{{Auth::user()->name}}</span><span>خوش آمدید</span>
                 </div>
             </div>
         </div>

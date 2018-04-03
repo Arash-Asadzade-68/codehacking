@@ -59,9 +59,12 @@
                     </tr>
 
                 @endforeach
+
             </tbody>
+
             @endif
         </table>
+            <div class="justify-content-center"> {{$users->render()}}</div>
 
 
     </div>

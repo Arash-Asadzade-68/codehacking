@@ -22,7 +22,7 @@ class AdminUsersController extends Controller
     {
         //
 
-        $users = User::all();
+        $users = User::paginate(5);
 
 
         return view('admin.users.index', compact('users'));
@@ -145,7 +145,10 @@ class AdminUsersController extends Controller
     {
         //
         $user = User::findOrFail($id);
-        if(file_exists(public_path().$user->photo->path) AND !empty($user->photo->path)){
+        if($user->photo_id == null){
+            $user->delete();
+        }
+        else if(file_exists(public_path().$user->photo->path) AND !empty($user->photo->path)){
             unlink(public_path().$user->photo->path);
             $user->photo->delete();
         }
