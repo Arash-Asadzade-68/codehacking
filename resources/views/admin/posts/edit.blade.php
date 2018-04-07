@@ -5,7 +5,7 @@
 
 @section('content')
 
-
+@include('includes.tinyeditor')
     <div class="col-xl-10">
         <h1>ویرایش پست</h1>
         <form class="align-content-center" method="Post" action="/admin/posts/{{$post->id}}" enctype="multipart/form-data">

@@ -26,9 +26,16 @@
     <img class="img-fluid rounded" src="{{$post->photo->path}}" alt="">
 
     <hr>
+    <div class="row">
+        <div class="col-md-12 post">
 
-    <!-- Post Content -->
-    <p class="lead"> {{$post->body}}</p>
+            <!-- Post Content -->
+            <p class="lead " >{!! $post->body !!}</p>
+
+        </div>
+
+
+    </div>
 
     <hr>
 
@@ -80,7 +87,8 @@
                     </span>
 
                     <p style="font-size: 10pt" class="p-1">{{$comment->body}}
-                        <span id="#{{$comment->id}}" onclick="showReplies(this,{{$comment->id}})" class="fa fa-reply float-left" style="font-size: 16px; cursor: pointer"></span></p>
+                        <span id="#{{$comment->id}}" onclick="showReplies(this,{{$comment->id}})"
+                              class="fa fa-reply float-left" style="font-size: 16px; cursor: pointer"></span></p>
 
 
                     <div class="respond">
@@ -91,19 +99,19 @@
 
                                 @if($reply->is_active==1)
 
-                                <div class="media mt-4">
-                                    <img height="50" width="50" class="d-flex mr-3 rounded-circle"
-                                         src="{{$reply->photo}}" alt="">
-                                    <div class="media-body">
+                                    <div class="media mt-4">
+                                        <img height="50" width="50" class="d-flex mr-3 rounded-circle"
+                                             src="{{$reply->photo}}" alt="">
+                                        <div class="media-body">
                                     <span class="mt-0" style="font-size: 13pt">{{$reply->author}}
                                         <span style="font-size: 10pt; padding-right: 5px">{{$reply->created_at->diffForHumans()}}</span>
                                     </span>
-                                        <p style="font-size: 10pt" class="p-1">{{$reply->body}}</p>
+                                            <p style="font-size: 10pt" class="p-1">{{$reply->body}}</p>
+
+                                        </div>
+
 
                                     </div>
-
-
-                                </div>
 
                                 @endif
                             @endforeach

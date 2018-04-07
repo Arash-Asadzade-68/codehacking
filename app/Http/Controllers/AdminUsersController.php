@@ -145,7 +145,7 @@ class AdminUsersController extends Controller
     {
         //
         $user = User::findOrFail($id);
-        if($user->photo_id == null){
+        if(is_null($user->photo_id)){
             $user->delete();
         }
         else if(file_exists(public_path().$user->photo->path) AND !empty($user->photo->path)){
