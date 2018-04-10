@@ -23,7 +23,7 @@
     <hr>
 
     <!-- Preview Image -->
-    <img class="img-fluid rounded" src="{{$post->photo->path}}" alt="">
+    <img class="img-fluid rounded" src="{{$post->photo ? $post->photo->path: '1.png'}}" alt="">
 
     <hr>
     <div class="row">
